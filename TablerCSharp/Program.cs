@@ -1,19 +1,12 @@
-using TablerCSharp;
+namespace TablerCSharp;
 
 public class Example
 {
-    private class Person
+    private sealed class Person(string firstname, string lastname, DateTime birthdate)
     {
-        public string FirstName;
-        public string LastName;
-        public DateTime BirthDate;
-
-        public Person(string firstname, string lastname, DateTime birthdate)
-        {
-            FirstName = firstname;
-            LastName = lastname;
-            BirthDate = birthdate;
-        }
+        public string FirstName { get; set; } = firstname;
+        public string LastName { get; set; } = lastname;
+        public DateTime BirthDate { get; set; } = birthdate;
     }
 
     public static void Main()
@@ -21,7 +14,7 @@ public class Example
         var tabler = new Tabler<Person>([
             new ColumnDefinition<Person>(() => "First Name", (p) => p.FirstName),
                 new ColumnDefinition<Person>(() => "Last Name", (p) => p.LastName),
-                new ColumnDefinition<Person>(() => "Birth Date", (p) => p.BirthDate.ToString("yyyy-MM-dd")),
+                new ColumnDefinition<Person>(() => "Birth Date", (p) => p.BirthDate.ToString("yyyy-MM-dd", System.Globalization.CultureInfo.InvariantCulture)),
             ]);
 
         var result = tabler.RenderString([
@@ -29,7 +22,7 @@ public class Example
                 new Person("Arnold", "Schwarzenegger", new DateTime(1947, 07, 30)),
             ]);
 
-
-        System.Console.WriteLine(result);
+        Console.WriteLine(result);
     }
 }
+

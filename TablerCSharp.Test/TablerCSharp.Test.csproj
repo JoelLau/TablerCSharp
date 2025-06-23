@@ -16,6 +16,11 @@
     For more information on Microsoft Testing Platform support in xUnit.net, please visit:
       https://xunit.net/docs/getting-started/v3/microsoft-testing-platform
     -->
+    <CodeAnalysisTreatWarningsAsError>true</CodeAnalysisTreatWarningsAsError>
+    <EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
+    <TestingPlatformDotnetTestSupport>true</TestingPlatformDotnetTestSupport>
+    <UseMicrosoftTestingPlatformRunner>true</UseMicrosoftTestingPlatformRunner>
+    <LangVersion>preview</LangVersion>
   </PropertyGroup>
 
   <ItemGroup>
